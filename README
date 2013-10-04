@@ -1,0 +1,20 @@
+Installation:
+
+Unix/linux:
+
+> git clone git://github.com/rhardey/vimfiles.git ~/.vim
+> ln -s ~/.vim/vimrc ~/.vimrc
+> ln -s ~/.vim/gvimrc ~/.gvimrc
+> git submodule update --init
+        
+Windows:
+
+In the home folder:
+
+NOTE: I've had all sorts of grief with symlinks in Windows so have given up trying to use them.
+
+> git clone git://github.com/rhardey/vimfiles.git %HOME%\vimfiles
+> echo source ~/vimfiles/vimrc > %HOME%/.vimrc
+> echo source ~/vimfiles/gvimrc > %HOME%/.gvimrc
+> git submodule update --init
+
