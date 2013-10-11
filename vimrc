@@ -93,6 +93,12 @@ set foldlevelstart=0 " Starts with all folds closed, where folding enabled.
 
 " Mappings ---------------------- {{{
 
+" Explicitly set the leader mappings, so I know what they are.  Should be done
+" before plugins are activated.
+let mapleader="\\"
+" Let's keep local and global leader settings separate.
+let maplocalleader="-" " REVISIT - Is there a better key?
+
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
@@ -104,11 +110,15 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " A different escape - REVISIT not sure how valuable I'll find this.
 inoremap jk <esc>
 
-" Explicitly set the leader mappings, so I know what they are.  Should be done
-" before plugins are activated.
-let mapleader="\\"
-" Let's keep local and global leader settings separate.
-let maplocalleader="-" " REVISIT - Is there a better key?
+" Want a quick way to close
+nnoremap <leader>c <C-W>c
+
+" Turn off highlighting for the last search.
+nnoremap <leader>h :nohlsearch<cr>
+
+" Remove extraneous space at the end of lines
+nnoremap <leader>ds :%s/\s\+$//g<cr>
+
 " }}}
 
 " Abbreviations ---------------------- {{{
@@ -150,7 +160,7 @@ augroup vimrcEx
   autocmd FileType text setlocal textwidth=78
 
   " Expand tabs to 2 spaces, and set folding method to 'marker'
-  autocmd FileType vim setlocal shiftwidth=2, tabstop=2, foldmethod=marker
+  autocmd FileType vim setlocal shiftwidth=2 tabstop=2 foldmethod=marker
 
   autocmd FileType php
         \ let php_minlines = 2000 " variables for php syntax highlighting
@@ -193,6 +203,10 @@ let g:vorax_explorer_file_extensions = { 'PACKAGE' : 'pkg',
 " }}}
 
 " CtrlP ---------------------- {{{
+"
 let g:ctrlp_working_path_mode = 'rw' " Use the CWD.
+
+nnoremap <c-b> :CtrlPBuffer<cr>
+
 " }}}
 " }}}
