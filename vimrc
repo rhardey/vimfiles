@@ -186,6 +186,9 @@ call pathogen#helptags()
 " }}}
 
 " Vorax setup ---------------------- {{{
+
+nnoremap <leader>vc     :VORAXOutputClear<cr>
+
 let g:vorax_debug_level = 'ALL'
 let g:vorax_output_window_clear_before_exec = 0
 let g:vorax_throbber_chars = ['|', '/', '-', '\']
@@ -204,7 +207,7 @@ let g:vorax_explorer_file_extensions = { 'PACKAGE' : 'pkg',
 
 " CtrlP ---------------------- {{{
 "
-let g:ctrlp_working_path_mode = 'rw' " Use the CWD.
+let g:ctrlp_working_path_mode = 'crw' " Use the CWD.
 
 nnoremap <c-b> :CtrlPBuffer<cr>
 
