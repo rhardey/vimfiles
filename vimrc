@@ -107,6 +107,9 @@ inoremap <C-U> <C-G>u<C-U>
 nnoremap <leader>ev :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
+" Make it easy to edit the TNSNAMES.ORA file.
+nnoremap <leader>ot :e $TNS_ADMIN/tnsnames.ora<cr>
+
 " A different escape - REVISIT not sure how valuable I'll find this.
 inoremap jk <esc>
 
@@ -179,6 +182,18 @@ augroup END
 " }}}
 
 " Plugins ---------------------- {{{
+"
+" Builtin netrw plugin configuration ---------------------- {{{
+if has('win32') " Configure PuTTY for use with netrw.
+  let g:netrw_silent = 1
+  let g:netrw_scp_cmd="pscp -q -agent -batch"
+  let g:netrw_list_cmd = "plink -agent USEPORT HOSTNAME \"ls -Fa\" "
+  let g:netrw_ssh_cmd  = "plink -agent"
+  let g:netrw_sftp_cmd = "psftp -agent"
+endif
+" }}}
+
+"
 " Pathogen plugin management ---------------------- {{{
 runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
