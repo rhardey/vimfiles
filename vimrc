@@ -45,6 +45,8 @@ set cinoptions+=:0,(s
 
 " Had enough of tabs
 set expandtab
+set shiftwidth=4
+set tabstop=4
 
 " show matching parenthesis etc
 set showmatch
@@ -199,7 +201,7 @@ runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 call pathogen#helptags()
 " }}}
-
+"
 " Vorax setup ---------------------- {{{
 
 nnoremap <leader>vc     :VORAXOutputClear<cr>
