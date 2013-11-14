@@ -11,6 +11,11 @@ set nobackup    " Do not keep a backup file (i.e. no ~ files scattered around, O
 
 set showcmd     " display incomplete commands
 
+
+" When on, Vim will change the current working directory whenever you open a
+" file, switch buffers, delete a buffer or open/close a window.
+set autochdir
+
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
   set mouse=a
@@ -59,7 +64,7 @@ set printoptions+=number:y
 " Clobbered by statusline settings, by the looks.
 "set ruler
 
-set history=1000
+set history=2048
 
 set viminfo='20,\"50
 
@@ -167,6 +172,9 @@ augroup vimrcEx
   " Expand tabs to 2 spaces, and set folding method to 'marker'
   autocmd FileType vim setlocal shiftwidth=2 tabstop=2 foldmethod=marker
 
+  " Expand tabs to 2 spaces, and set folding method to 'marker'
+  autocmd FileType python setlocal shiftwidth=2 tabstop=2
+
   autocmd FileType php
         \ let php_minlines = 2000 " variables for php syntax highlighting
 
@@ -209,22 +217,22 @@ nnoremap <leader>vc     :VORAXOutputClear<cr>
 let g:vorax_debug_level = 'ALL'
 let g:vorax_output_window_clear_before_exec = 0
 let g:vorax_throbber_chars = ['|', '/', '-', '\']
-let g:vorax_explorer_file_extensions = { 'PACKAGE' : 'pkg',
-                                   \     'PACKAGE_SPEC' : 'pks',
-                                   \     'PACKAGE_BODY' : 'pkb',
-                                   \     'FUNCTION' : 'fnc',
-                                   \     'PROCEDURE' : 'prc',
-                                   \     'TRIGGER' : 'trg',
-                                   \     'TYPE' : 'typ',
-                                   \     'TYPE_SPEC' : 'tps',
-                                   \     'TYPE_BODY' : 'tpb',
-                                   \     'TABLE' : 'tab',
-                                   \     'VIEW' : 'view', }
+let g:vorax_output_window_append = 1
+let g:vorax_plsql_associations = {'PACKAGE_BODY': 'pkb,pls',
+                               \  'FUNCTION': 'fnc',
+                               \  'TYPE_SPEC': 'tps',
+                               \  'PROCEDURE': 'prc',
+                               \  'PACKAGE': 'pkg,pls',
+                               \  'PACKAGE_SPEC': 'pks,pls',
+                               \  'TRIGGER': 'trg',
+                               \  'TYPE': 'typ',
+                               \  'JAVA_SOURCE': 'java',
+                               \  'TYPE_BODY': 'tpb'}
 " }}}
 
 " CtrlP ---------------------- {{{
 "
-let g:ctrlp_working_path_mode = 'crw' " Use the CWD.
+let g:ctrlp_working_path_mode = 'rc' " Use the CWD.
 
 nnoremap <c-b> :CtrlPBuffer<cr>
 
