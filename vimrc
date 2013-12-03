@@ -226,7 +226,6 @@ let g:vorax_plsql_associations = {'PACKAGE_BODY': 'pkb,pls',
                                \  'PACKAGE_SPEC': 'pks,pls',
                                \  'TRIGGER': 'trg',
                                \  'TYPE': 'typ',
-                               \  'JAVA_SOURCE': 'java',
                                \  'TYPE_BODY': 'tpb'}
 " }}}
 

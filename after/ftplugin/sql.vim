@@ -1,7 +1,7 @@
 " NOTE: I force the use of PL/SQL syntax file for file types of SQL.
 setlocal expandtab
-setlocal tabstop=4
-setlocal shiftwidth=4
+setlocal tabstop=3
+setlocal shiftwidth=3
 
 " PL/SQL is not case sensitive
 " Actually this option is global only, so setlocal acts just the same as set
