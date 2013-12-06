@@ -203,16 +203,25 @@ if has('win32') " Configure PuTTY for use with netrw.
 endif
 " }}}
 
-"
+" Settings required prior to Pathogen getting going {{{
+"let g:ycm_semantic_triggers = { 'mytest' : ['.'] }
+"let g:ycm_server_use_vim_stdout = 1
+" }}}
+
 " Pathogen plugin management ---------------------- {{{
 runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 call pathogen#helptags()
 " }}}
-"
+
 " Vorax setup ---------------------- {{{
 
 nnoremap <leader>vc     :VORAXOutputClear<cr>
+
+if &diff
+  " setup for diff mode
+  let g:vorax_folding_enable = 0
+endif
 
 let g:vorax_debug_level = 'ALL'
 let g:vorax_output_window_clear_before_exec = 0

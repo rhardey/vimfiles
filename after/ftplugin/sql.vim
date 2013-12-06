@@ -14,6 +14,7 @@ setlocal nofoldenable
 " TODO: Are the following useful?
 "" PL/SQL comments
 "setlocal comments=s1:/*,mb:*,ex:*/,b:--
+setlocal comments+=b:--*
 "
 "" PL/SQL := assignment construct should not cause indentation (with : option,
 "" vim indents assumming a 'c' style label is being entered).
