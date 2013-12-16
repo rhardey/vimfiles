@@ -223,6 +223,7 @@ if &diff
   let g:vorax_folding_enable = 0
 endif
 
+let g:vorax_homedir = '~/.vorax'
 let g:vorax_debug_level = 'ALL'
 let g:vorax_output_window_clear_before_exec = 0
 let g:vorax_throbber_chars = ['|', '/', '-', '\']
