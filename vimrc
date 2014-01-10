@@ -14,7 +14,12 @@ set showcmd     " display incomplete commands
 
 " When on, Vim will change the current working directory whenever you open a
 " file, switch buffers, delete a buffer or open/close a window.
-set autochdir
+"set autochdir
+" autochdir was causing some weird behaviour with relative paths being passed
+" via the command line.  The alternative below does what I need without the
+" weirdness (see
+" http://vim.wikia.com/wiki/Set_working_directory_to_the_current_file).
+autocmd BufEnter * silent! lcd %:p:h
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
@@ -104,7 +109,7 @@ set foldlevelstart=0 " Starts with all folds closed, where folding enabled.
 " before plugins are activated.
 let mapleader="\\"
 " Let's keep local and global leader settings separate.
-let maplocalleader="-" " REVISIT - Is there a better key?
+let maplocalleader=";" " REVISIT - Is there a better key?
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
@@ -215,8 +220,6 @@ call pathogen#helptags()
 " }}}
 
 " Vorax setup ---------------------- {{{
-
-nnoremap <leader>vc     :VORAXOutputClear<cr>
 
 if &diff
   " setup for diff mode
