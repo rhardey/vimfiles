@@ -80,7 +80,9 @@ set incsearch
 set nrformats=alpha,hex
 
 " Show the line number relative to the line with the cursor in front of each line.
-set relativenumber
+if !&diff
+  set relativenumber
+endif
 
 " Set auto completion to work similar to my Bash setup.
 set wildmode=longest,list
@@ -116,23 +118,23 @@ let maplocalleader=";" " REVISIT - Is there a better key?
 inoremap <C-U> <C-G>u<C-U>
 
 " Make it easy to edit the .vimrc file.
-nnoremap <leader>ev :split $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <localleader>ev :split $MYVIMRC<cr>
+nnoremap <localleader>sv :source $MYVIMRC<cr>
 
 " Make it easy to edit the TNSNAMES.ORA file.
-nnoremap <leader>ot :e $TNS_ADMIN/tnsnames.ora<cr>
+nnoremap <localleader>ot :e $TNS_ADMIN/tnsnames.ora<cr>
 
 " A different escape - REVISIT not sure how valuable I'll find this.
 inoremap jk <esc>
 
 " Want a quick way to close
-nnoremap <leader>c <C-W>c
+nnoremap <localleader>c <C-W>c
 
 " Turn off highlighting for the last search.
-nnoremap <leader>h :nohlsearch<cr>
+nnoremap <localleader>h :nohlsearch<cr>
 
 " Remove extraneous space at the end of lines
-nnoremap <leader>ds :%s/\s\+$//g<cr>
+nnoremap <localleader>ds :%s/\s\+$//g<cr>
 
 " }}}
 
