@@ -136,6 +136,9 @@ nnoremap <localleader>h :nohlsearch<cr>
 " Remove extraneous space at the end of lines
 nnoremap <localleader>ds :%s/\s\+$//g<cr>
 
+" Go to the next item in the quickfix list quickly
+nnoremap <localleader>n :cn<cr>
+
 " }}}
 
 " Abbreviations ---------------------- {{{
@@ -216,6 +219,8 @@ endif
 " }}}
 
 " Pathogen plugin management ---------------------- {{{
+" To disable a plugin, add it's bundle name to the following list
+"let g:pathogen_disabled = ['ycm']
 runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 call pathogen#helptags()
@@ -231,17 +236,17 @@ endif
 let g:vorax_homedir = '~/.vorax'
 let g:vorax_debug_level = 'ALL'
 let g:vorax_output_window_clear_before_exec = 0
-let g:vorax_throbber_chars = ['|', '/', '-', '\']
 let g:vorax_output_window_append = 1
-let g:vorax_plsql_associations = {'PACKAGE_BODY': 'pkb,pls',
-                               \  'FUNCTION': 'fnc',
-                               \  'TYPE_SPEC': 'tps',
-                               \  'PROCEDURE': 'prc',
-                               \  'PACKAGE': 'pkg,pls',
-                               \  'PACKAGE_SPEC': 'pks,pls',
-                               \  'TRIGGER': 'trg',
-                               \  'TYPE': 'typ',
-                               \  'TYPE_BODY': 'tpb'}
+
+" Default to TABLEZIP
+let g:vorax_output_window_default_funnel = 3
+
+let g:vorax_throbber = ['|', '/', '-', '\']
+" NOTE: Vorax sets any values not set here.
+let g:vorax_plsql_associations = {'PACKAGE_BODY': 'pkb',
+                               \  'PACKAGE_SPEC': 'pks',
+                               \  'PACKAGE': 'pls'
+                               \}
 " }}}
 
 " CtrlP ---------------------- {{{
@@ -249,6 +254,28 @@ let g:vorax_plsql_associations = {'PACKAGE_BODY': 'pkb,pls',
 let g:ctrlp_working_path_mode = 'rc' " Use the CWD.
 
 nnoremap <c-b> :CtrlPBuffer<cr>
+
+" }}}
+
+" YouCompleteMe ---------------------- {{{
+let g:ycm_server_keep_logfiles=1
+"let g:ycm_server_log_level = 'debug'
+let g:ycm_collect_identifiers_from_tags_files=1
+" }}}
+
+" JavaComplete ---------------------- {{{
+"
+" Vim configuration augroup ---------------------- {{{
+" Put these in an autocmd group, so that we can delete them easily.
+augroup JavaComplete
+  au!
+
+  " Set omnifunc
+  autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+augroup END
+" }}}
+
 
 " }}}
 " }}}

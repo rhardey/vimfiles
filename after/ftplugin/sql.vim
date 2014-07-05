@@ -20,3 +20,7 @@ setlocal comments+=b:--,b:--*
 "" vim indents assumming a 'c' style label is being entered).
 "setlocal cinkeys-=:
 "setlocal indentkeys-=:
+
+" This removes a VoraX mapping allowing '@' to execute the entire buffer.
+" Yuck!  I prefer the default setting for this key. There's <Leader>be anyway.
+silent! nunmap <buffer> @
