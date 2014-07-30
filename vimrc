@@ -151,9 +151,12 @@ iabbrev rjh Ryan Hardey
 set statusline=%f " Relative path
 set statusline+=\ %m%r " modified and read-only flags
 set statusline+=%y " File type
+set statusline+=%{fugitive#statusline()} " Fugitive status
 set statusline+=%=%-14.(%l,%c%V%) " Line number, column and virtual column
 set statusline+=\ %14L " Lines in buffer
 set statusline+=\ %P " Percentage through file of displayed window.
+
+set laststatus=2 " Always display status line.
 " }}}
 
 " Diff setup ---------------------- {{{
