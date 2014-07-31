@@ -2,7 +2,8 @@ colorscheme darkblue
 set columns=132
 set lines=40
 set guioptions+=a
-set guifont=Lucida_Console:h9:cANSI
+"set guifont=Lucida_Console:h9:cANSI
+set guifont=Courier\ New\ Bold\ 10
 
 if has("gui_win32")
   behave mswin
