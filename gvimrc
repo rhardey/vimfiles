@@ -2,11 +2,10 @@ colorscheme darkblue
 set columns=132
 set lines=40
 set guioptions+=a
-"set guifont=Lucida_Console:h9:cANSI
-set guifont=Courier\ New\ Bold\ 10
 
 if has("gui_win32")
   behave mswin
+  set guifont=Lucida_Console:h9:cANSI
 
   set diffexpr=MyDiff()
   function MyDiff()
@@ -25,4 +24,6 @@ if has("gui_win32")
       silent execute '!C:"\Program Files\Vim\vim73\diff" ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
     "endif
   endfunction
+else
+  set guifont=Courier\ New\ Bold\ 10
 endif
