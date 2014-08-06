@@ -151,9 +151,8 @@ iabbrev rjh Ryan Hardey
 set statusline=%f " Relative path
 set statusline+=\ %m%r " modified and read-only flags
 set statusline+=%y " File type
-if exists("fugitive#statusline()")
-  set statusline+=%{fugitive#statusline()} " Fugitive status
-endif
+set statusline+=[%{&ff}] " File format
+set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''} " Fugitive status
 set statusline+=%=%-14.(%l,%c%V%) " Line number, column and virtual column
 set statusline+=\ %14L " Lines in buffer
 set statusline+=\ %P " Percentage through file of displayed window.
