@@ -1,7 +1,13 @@
 colorscheme darkblue
 set columns=132
 set lines=40
+
+" Yank into the clipboard all VISUAL selections.
 set guioptions+=a
+
+" I almost never use the menu, and never use the toolbar.
+set guioptions-=m
+set guioptions-=T
 
 if has("gui_win32")
   behave mswin
