@@ -27,7 +27,6 @@ if has('mouse')
 endif
 
 " Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
   syntax on
 endif
@@ -117,15 +116,16 @@ let maplocalleader=";" " REVISIT - Is there a better key?
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
 
+" There is a problem when in a sql buffer getting omni completion to work, there appears to be a mapping overriding
+" <C-X><C-O>.  Until I track down what is going on here's an alternative mapping:
+inoremap <c-l> <C-X><C-O>
+
 " Make it easy to edit the .vimrc file.
 nnoremap <localleader>ev :split $MYVIMRC<cr>
 nnoremap <localleader>sv :source $MYVIMRC<cr>
 
 " Make it easy to edit the TNSNAMES.ORA file.
 nnoremap <localleader>ot :e $TNS_ADMIN/tnsnames.ora<cr>
-
-" A different escape - REVISIT not sure how valuable I'll find this.
-inoremap jk <esc>
 
 " Want a quick way to close
 nnoremap <localleader>c <C-W>c
