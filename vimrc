@@ -153,6 +153,7 @@ set statusline+=\ %m%r " modified and read-only flags
 set statusline+=%y " File type
 set statusline+=[%{&ff}] " File format
 set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''} " Fugitive status
+set statusline+=[char=%b]
 set statusline+=%=%-14.(%l,%c%V%) " Line number, column and virtual column
 set statusline+=\ %14L " Lines in buffer
 set statusline+=\ %P " Percentage through file of displayed window.
@@ -186,8 +187,11 @@ augroup vimrcEx
   " Expand tabs to 2 spaces, and set folding method to 'marker'
   autocmd FileType vim setlocal shiftwidth=2 tabstop=2 foldmethod=marker
 
-  " Expand tabs to 2 spaces, and set folding method to 'marker'
+  " Expand tabs to 2 spaces.
   autocmd FileType python setlocal shiftwidth=2 tabstop=2
+
+  " Expand tabs to 2 spaces.
+  autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
 
   autocmd FileType php
         \ let php_minlines = 2000 " variables for php syntax highlighting
