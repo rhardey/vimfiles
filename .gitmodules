@@ -16,3 +16,12 @@
 [submodule "bundle/neocomplete"]
 	path = bundle/neocomplete
 	url = https://github.com/Shougo/neocomplete.vim.git
+[submodule "bundle/misc"]
+	path = bundle/misc
+	url = https://github.com/xolox/vim-misc.git
+[submodule "bundle/easytags"]
+	path = bundle/easytags
+	url = https://github.com/vim-scripts/easytags.vim.git
+[submodule "bundle/tagbar"]
+	path = bundle/tagbar
+	url = https://github.com/majutsushi/tagbar.git
