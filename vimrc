@@ -102,6 +102,9 @@ set foldlevelstart=0 " Starts with all folds closed, where folding enabled.
 "let g:xml_syntax_folding = 1
 "let perl_fold = 1
 
+" I wanna use matchit!
+source $VIMRUNTIME/macros/matchit.vim
+
 " }}}
 
 " Mappings ---------------------- {{{
@@ -228,7 +231,7 @@ endif
 
 " Pathogen plugin management ---------------------- {{{
 " To disable a plugin, add it's bundle name to the following list
-"let g:pathogen_disabled = ['ycm']
+let g:pathogen_disabled = ['ycm']
 runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 call pathogen#helptags()
@@ -236,12 +239,15 @@ call pathogen#helptags()
 
 " Vorax setup ---------------------- {{{
 
-if &diff
+"if &diff
   " setup for diff mode
+  " Vorax folding interferes with fugitive Gdiff, so turning off until
+  " resolved.
   let g:vorax_folding_enable = 0
-endif
+"endif
 
-let g:vorax_homedir = '~/.vorax'
+let g:vorax_homedir = '\Users\hardeyry\.vorax'
+let g:vorax_debug = 1
 let g:vorax_debug_level = 'ALL'
 let g:vorax_output_window_clear_before_exec = 0
 let g:vorax_output_window_append = 1
@@ -283,7 +289,20 @@ augroup JavaComplete
 
 augroup END
 " }}}
+" }}}
 
+" tagbar ---------------------- {{{
+"
+nnoremap <silent> <F8> :TagbarToggle<CR>
 
 " }}}
+
+" NeoComplete ---------------------- {{{
+"
+let g:neocomplete#enable_at_startup = 1
+
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" }}}
+
 " }}}

@@ -27,7 +27,7 @@ if has("gui_win32")
     "if &sh =~ '\<cmd'
       "execute '!""C:\Program Files\Vim\vim73\diff" ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . '"'
     "else
-      silent execute '!C:"\Program Files\Vim\vim73\diff" ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
+      silent execute '!C:"\Program Files\Vim\vim74\diff" ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
     "endif
   endfunction
 else
