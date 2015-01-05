@@ -121,7 +121,7 @@ inoremap <C-U> <C-G>u<C-U>
 
 " There is a problem when in a sql buffer getting omni completion to work, there appears to be a mapping overriding
 " <C-X><C-O>.  Until I track down what is going on here's an alternative mapping:
-inoremap <c-l> <C-X><C-O>
+inoremap <C-K> <C-X><C-O>
 
 " Make it easy to edit the .vimrc file.
 nnoremap <localleader>ev :split $MYVIMRC<cr>
@@ -132,6 +132,9 @@ nnoremap <localleader>ot :e $TNS_ADMIN/tnsnames.ora<cr>
 
 " Want a quick way to close
 nnoremap <localleader>c <C-W>c
+
+" Want a quick way to close all windows except the current one.
+nnoremap <localleader>o :only<cr>
 
 " Turn off highlighting for the last search.
 nnoremap <localleader>h :nohlsearch<cr>
