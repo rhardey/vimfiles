@@ -264,6 +264,10 @@ let g:vorax_plsql_associations = {'PACKAGE_BODY': 'pkb',
                                \  'PACKAGE_SPEC': 'pks',
                                \  'PACKAGE': 'pls'
                                \}
+
+" Cleanup SQL copied and pasted from a sqlplus buffer.
+nnoremap <localleader>r  :'<,'>s/^\d\d:\d\d:\d\d\s\+\%(\w\+@\w\+>\s\\|\d\+\s\s\)\=//<cr>
+
 " }}}
 
 " CtrlP ---------------------- {{{
