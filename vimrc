@@ -234,7 +234,7 @@ endif
 
 " Pathogen plugin management ---------------------- {{{
 " To disable a plugin, add it's bundle name to the following list
-let g:pathogen_disabled = ['ycm']
+let g:pathogen_disabled = ['ycm', 'tagbar']
 runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 call pathogen#helptags()
@@ -265,9 +265,13 @@ let g:vorax_plsql_associations = {'PACKAGE_BODY': 'pkb',
                                \  'PACKAGE': 'pls'
                                \}
 
-" Cleanup SQL copied and pasted from a sqlplus buffer.
-nnoremap <localleader>r  :'<,'>s/^\d\d:\d\d:\d\d\s\+\%(\w\+@\w\+>\s\\|\d\+\s\s\)\=//<cr>
+augroup VoraX
+  au!
 
+  " Cleanup SQL copied and pasted from a sqlplus buffer.
+  autocmd FileType sql nnoremap <localleader>r  :'<,'>s/^\d\d:\d\d:\d\d\s\+\%(\w\+@\w\+>\s\\|\d\+\s\s\)\=//<cr>
+
+augroup END
 " }}}
 
 " CtrlP ---------------------- {{{
