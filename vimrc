@@ -169,6 +169,8 @@ set laststatus=2 " Always display status line.
 
 " Diff setup ---------------------- {{{
 
+set diffexpr=
+
 set diffopt+=vertical
 set diffopt+=iwhite
 set diffopt+=icase

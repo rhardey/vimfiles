@@ -13,7 +13,10 @@ if has("gui_win32")
   behave mswin
   set guifont=Lucida_Console:h9:cANSI
 
-  set diffexpr=MyDiff()
+  "It appears the MyDiff() is no longer required for Windows (perhaps Vim is
+  "finding diff on the path). Not sure if it handles spaces in file paths
+  "properly so will keep this until proven.
+  "set diffexpr=MyDiff()
   function MyDiff()
     let opt = '-a --binary '
     if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
