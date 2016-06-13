@@ -236,7 +236,7 @@ endif
 
 " Pathogen plugin management ---------------------- {{{
 " To disable a plugin, add it's bundle name to the following list
-let g:pathogen_disabled = ['ycm', 'tagbar']
+let g:pathogen_disabled = ['ycm', 'tagbar', 'easytags', 'AutoTag']
 runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 call pathogen#helptags()
