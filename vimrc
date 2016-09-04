@@ -124,7 +124,12 @@ inoremap <C-U> <C-G>u<C-U>
 inoremap <C-K> <C-X><C-O>
 
 " Make it easy to edit the .vimrc file.
-nnoremap <localleader>ev :split $MYVIMRC<cr>
+if has('win32') " Configure PuTTY for use with netrw.
+  nnoremap <localleader>ev :split ~/vimfiles/vimrc<cr>
+else
+  nnoremap <localleader>ev :split $MYVIMRC<cr>
+endif
+  
 nnoremap <localleader>sv :source $MYVIMRC<cr>
 
 " Make it easy to edit the TNSNAMES.ORA file.
