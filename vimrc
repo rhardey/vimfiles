@@ -324,7 +324,7 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " }}}
 " vim-go ---------------------- {{{
 "
-if (win32)
+if has('win32')
     " Windows doesn't like unix sockets, use tcp instead.  Breaks
     " auto-completion otherwise.
     let g:go_gocode_socket_type = "tcp"
