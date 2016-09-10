@@ -124,12 +124,12 @@ inoremap <C-U> <C-G>u<C-U>
 inoremap <C-K> <C-X><C-O>
 
 " Make it easy to edit the .vimrc file.
-if has('win32') " Configure PuTTY for use with netrw.
+if has('win32')
   nnoremap <localleader>ev :split ~/vimfiles/vimrc<cr>
 else
   nnoremap <localleader>ev :split $MYVIMRC<cr>
 endif
-  
+
 nnoremap <localleader>sv :source $MYVIMRC<cr>
 
 " Make it easy to edit the TNSNAMES.ORA file.
@@ -321,6 +321,14 @@ let g:neocomplete#enable_at_startup = 1
 
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
+" }}}
+" vim-go ---------------------- {{{
+"
+if (win32)
+    " Windows doesn't like unix sockets, use tcp instead.  Breaks
+    " auto-completion otherwise.
+    let g:go_gocode_socket_type = "tcp"
+endif
 " }}}
 
 " }}}
