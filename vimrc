@@ -146,7 +146,16 @@ inoremap <C-U> <C-G>u<C-U>
 inoremap <C-K> <C-X><C-O>
 
 " Make it easy to edit the .vimrc file.
+<<<<<<< HEAD
 nnoremap <localleader>ev :split $MYVIMRC<cr>
+=======
+if has('win32')
+  nnoremap <localleader>ev :split ~/vimfiles/vimrc<cr>
+else
+  nnoremap <localleader>ev :split $MYVIMRC<cr>
+endif
+
+>>>>>>> f69eb7a2cb1bfaa4ca514d210951db789d761847
 nnoremap <localleader>sv :source $MYVIMRC<cr>
 
 " Make it easy to edit the TNSNAMES.ORA file.
