@@ -1,3 +1,12 @@
+" Initialise variables for later use in vimrc ---------------------- {{{
+
+" If this is a Windows environment that doesn't use a POSIX shell,
+" set to vimfiles else set .vim
+let win_shell = (has('win32') || has('win64')) && &shellcmdflag =~ '/'
+let vimDir = win_shell ? $HOME.'/vimfiles' : $HOME.'/.vim'
+
+" }}}
+
 " Basic settings ---------------------- {{{
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -107,6 +116,19 @@ source $VIMRUNTIME/macros/matchit.vim
 
 " }}}
 
+" Persistent undo ---------------------- {{{
+
+let vimUndoDir = vimDir."/undo"
+
+" Let's save undo info!
+if !isdirectory(vimUndoDir)
+    call mkdir(vimUndoDir, "", 0700)
+endif
+let &undodir=vimUndoDir
+set undofile
+
+" }}}
+
 " Mappings ---------------------- {{{
 
 " Explicitly set the leader mappings, so I know what they are.  Should be done
@@ -124,12 +146,7 @@ inoremap <C-U> <C-G>u<C-U>
 inoremap <C-K> <C-X><C-O>
 
 " Make it easy to edit the .vimrc file.
-if has('win32')
-  nnoremap <localleader>ev :split ~/vimfiles/vimrc<cr>
-else
-  nnoremap <localleader>ev :split $MYVIMRC<cr>
-endif
-
+nnoremap <localleader>ev :split $MYVIMRC<cr>
 nnoremap <localleader>sv :source $MYVIMRC<cr>
 
 " Make it easy to edit the TNSNAMES.ORA file.
@@ -326,7 +343,7 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 "
 if has('win32')
     " Windows doesn't like unix sockets, use tcp instead.  Breaks
-    " auto-completion otherwise.
+    " auto-completion in golang otherwise.
     let g:go_gocode_socket_type = "tcp"
 endif
 " }}}
