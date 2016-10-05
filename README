@@ -4,25 +4,22 @@ Installation:
 Unix/linux:
 
 > git clone git://github.com/rhardey/vimfiles.git ~/.vim
-> ln -s ~/.vim/vimrc ~/.vimrc
-> ln -s ~/.vim/gvimrc ~/.gvimrc
-> git submodule update --init --recursive
         
 Windows:
 
-In the home folder:
-
-NOTE: I've had all sorts of grief with symlinks in Windows so have given up trying to use them.
-
 > git clone git://github.com/rhardey/vimfiles.git %HOME%\vimfiles
-> echo source ~/vimfiles/vimrc > %HOME%/.vimrc
-> echo source ~/vimfiles/gvimrc > %HOME%/.gvimrc
-> git submodule update --init --recursive
 
 Maintenance:
 ============
 
-To retrieve the latest version of each plugin:
+I am now using vim-plug.
 
-> git submodule foreach git pull origin master
-> git submodule update --recursive
+To install plugins, at the vim command line, enter the following:
+
+:PlugInstall
+
+To update, enter:
+
+:PlugUpdate
+
+View https://github.com/junegunn/vim-plug for further information on using this plugin manager.
