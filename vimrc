@@ -258,10 +258,24 @@ endif
 
 " Pathogen plugin management ---------------------- {{{
 " To disable a plugin, add it's bundle name to the following list
-let g:pathogen_disabled = ['ycm', 'tagbar', 'easytags', 'AutoTag']
-runtime bundle/pathogen/autoload/pathogen.vim
-call pathogen#infect()
-call pathogen#helptags()
+"let g:pathogen_disabled = ['ycm', 'tagbar', 'easytags', 'AutoTag']
+"runtime bundle/pathogen/autoload/pathogen.vim
+"call pathogen#infect()
+"call pathogen#helptags()
+" }}}
+
+" vim-plug plugin management ---------------------- {{{
+call plug#begin(vimDir.'/plugs')
+
+Plug 'https://github.com/talek/vorax4.git', { 'on': 'VORAXConnect' }
+Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
+Plug 'https://github.com/tpope/vim-fugitive.git'
+Plug 'https://github.com/Shougo/neocomplete.vim.git'
+Plug 'https://github.com/fatih/vim-go.git', { 'tag': '*', 'for': 'go' }
+Plug 'https://github.com/majutsushi/tagbar.git'
+Plug 'https://github.com/craigemery/vim-autotag.git'
+
+call plug#end()
 " }}}
 
 " Vorax setup ---------------------- {{{
@@ -339,6 +353,7 @@ let g:neocomplete#enable_at_startup = 1
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " }}}
+
 " vim-go ---------------------- {{{
 "
 if has('win32')
