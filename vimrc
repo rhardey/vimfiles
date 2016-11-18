@@ -315,6 +315,7 @@ augroup END
 " CtrlP ---------------------- {{{
 "
 let g:ctrlp_working_path_mode = 'rc' " Use the CWD.
+let g:ctrlp_show_hidden = 1
 
 nnoremap <c-b> :CtrlPBuffer<cr>
 
