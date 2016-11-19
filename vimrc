@@ -274,6 +274,7 @@ Plug 'https://github.com/Shougo/neocomplete.vim.git'
 Plug 'https://github.com/fatih/vim-go.git', { 'tag': '*', 'for': 'go' }
 Plug 'https://github.com/majutsushi/tagbar.git'
 Plug 'https://github.com/craigemery/vim-autotag.git'
+Plug 'https://github.com/PProvost/vim-ps1.git', { 'for': 'ps1' }
 
 call plug#end()
 " }}}
@@ -315,6 +316,7 @@ augroup END
 " CtrlP ---------------------- {{{
 "
 let g:ctrlp_working_path_mode = 'rc' " Use the CWD.
+let g:ctrlp_show_hidden = 1
 
 nnoremap <c-b> :CtrlPBuffer<cr>
 
