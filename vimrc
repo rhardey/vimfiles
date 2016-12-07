@@ -288,7 +288,7 @@ call plug#end()
   let g:vorax_folding_enable = 0
 "endif
 
-let g:vorax_homedir = '\Users\hardeyry\.vorax'
+let g:vorax_homedir = $HOME.'\.vorax'
 let g:vorax_debug = 1
 let g:vorax_debug_level = 'ALL'
 let g:vorax_output_window_clear_before_exec = 0
