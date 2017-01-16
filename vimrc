@@ -180,6 +180,7 @@ set statusline=%f " Relative path
 set statusline+=\ %m%r " modified and read-only flags
 set statusline+=%y " File type
 set statusline+=[%{&ff}] " File format
+set statusline+=[%{&fenc}] " File encoding
 set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''} " Fugitive status
 set statusline+=[char=%b]
 set statusline+=%=%-14.(%l,%c%V%) " Line number, column and virtual column
@@ -275,6 +276,7 @@ Plug 'https://github.com/fatih/vim-go.git', { 'tag': '*', 'for': 'go' }
 Plug 'https://github.com/majutsushi/tagbar.git'
 Plug 'https://github.com/craigemery/vim-autotag.git'
 Plug 'https://github.com/PProvost/vim-ps1.git', { 'for': 'ps1' }
+Plug 'https://github.com/juneedahamed/vc.vim'
 
 call plug#end()
 " }}}
