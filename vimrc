@@ -272,11 +272,12 @@ Plug 'https://github.com/talek/vorax4.git', { 'on': 'VORAXConnect' }
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/Shougo/neocomplete.vim.git'
-Plug 'https://github.com/fatih/vim-go.git', { 'tag': '*', 'for': 'go' }
+Plug 'https://github.com/fatih/vim-go.git', { 'tag': '*', 'for': 'go', 'do': ':GoInstallBinaries' }
 Plug 'https://github.com/majutsushi/tagbar.git'
 Plug 'https://github.com/craigemery/vim-autotag.git'
 Plug 'https://github.com/PProvost/vim-ps1.git', { 'for': 'ps1' }
 Plug 'https://github.com/juneedahamed/vc.vim'
+Plug 'https://github.com/artur-shaik/vim-javacomplete2'
 
 call plug#end()
 " }}}
@@ -330,7 +331,7 @@ let g:ycm_server_keep_logfiles=1
 let g:ycm_collect_identifiers_from_tags_files=1
 " }}}
 
-" JavaComplete ---------------------- {{{
+" Vim-JavaComplete2 ---------------------- {{{
 "
 " Vim configuration augroup ---------------------- {{{
 " Put these in an autocmd group, so that we can delete them easily.
@@ -339,6 +340,59 @@ augroup JavaComplete
 
   " Set omnifunc
   autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+  " To enable smart (trying to guess import option) inserting class imports with F4, add:
+
+  nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+  imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+
+  " To enable usual (will ask for import option) inserting class imports with F5, add:
+
+  nmap <F5> <Plug>(JavaComplete-Imports-Add)
+  imap <F5> <Plug>(JavaComplete-Imports-Add)
+
+  " To add all missing imports with F6:
+
+  nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+  imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+
+  " To remove all missing imports with F7:
+
+  nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+  imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+
+  " Default mappings:
+
+  nmap <leader>jI <Plug>(JavaComplete-Imports-AddMissing)
+  nmap <leader>jR <Plug>(JavaComplete-Imports-RemoveUnused)
+  nmap <leader>ji <Plug>(JavaComplete-Imports-AddSmart)
+  nmap <leader>jii <Plug>(JavaComplete-Imports-Add)
+
+  imap <C-j>I <Plug>(JavaComplete-Imports-AddMissing)
+  imap <C-j>R <Plug>(JavaComplete-Imports-RemoveUnused)
+  imap <C-j>i <Plug>(JavaComplete-Imports-AddSmart)
+  imap <C-j>ii <Plug>(JavaComplete-Imports-Add)
+
+  nmap <leader>jM <Plug>(JavaComplete-Generate-AbstractMethods)
+
+  imap <C-j>jM <Plug>(JavaComplete-Generate-AbstractMethods)
+
+  nmap <leader>jA <Plug>(JavaComplete-Generate-Accessors)
+  nmap <leader>js <Plug>(JavaComplete-Generate-AccessorSetter)
+  nmap <leader>jg <Plug>(JavaComplete-Generate-AccessorGetter)
+  nmap <leader>ja <Plug>(JavaComplete-Generate-AccessorSetterGetter)
+  nmap <leader>jts <Plug>(JavaComplete-Generate-ToString)
+  nmap <leader>jeq <Plug>(JavaComplete-Generate-EqualsAndHashCode)
+  nmap <leader>jc <Plug>(JavaComplete-Generate-Constructor)
+  nmap <leader>jcc <Plug>(JavaComplete-Generate-DefaultConstructor)
+
+  imap <C-j>s <Plug>(JavaComplete-Generate-AccessorSetter)
+  imap <C-j>g <Plug>(JavaComplete-Generate-AccessorGetter)
+  imap <C-j>a <Plug>(JavaComplete-Generate-AccessorSetterGetter)
+
+  vmap <leader>js <Plug>(JavaComplete-Generate-AccessorSetter)
+  vmap <leader>jg <Plug>(JavaComplete-Generate-AccessorGetter)
+  vmap <leader>ja <Plug>(JavaComplete-Generate-AccessorSetterGetter)
 
 augroup END
 " }}}
