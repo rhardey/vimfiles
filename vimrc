@@ -167,6 +167,9 @@ nnoremap <localleader>ds :%s/\s\+$//g<cr>
 " Go to the next item in the quickfix list quickly
 nnoremap <localleader>n :cn<cr>
 
+" Perform a diffput
+nnoremap <localleader>p :diffput<cr>
+
 " }}}
 
 " Abbreviations ---------------------- {{{
