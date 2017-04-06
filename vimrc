@@ -114,6 +114,9 @@ set foldlevelstart=0 " Starts with all folds closed, where folding enabled.
 " I wanna use matchit!
 source $VIMRUNTIME/macros/matchit.vim
 
+" SQL syntax highlighting will default to sqlserver (ughh)
+let g:sql_type_default = "sqlserver"
+
 " }}}
 
 " Persistent undo ---------------------- {{{
