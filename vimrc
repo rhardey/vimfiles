@@ -271,7 +271,7 @@ endif
 " vim-plug plugin management ---------------------- {{{
 call plug#begin(vimDir.'/plugs')
 
-Plug 'https://github.com/talek/vorax4.git', { 'on': 'VORAXConnect' }
+Plug 'https://github.com/talek/vorax4.git'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/Shougo/neocomplete.vim.git'
