@@ -114,6 +114,9 @@ set foldlevelstart=0 " Starts with all folds closed, where folding enabled.
 " I wanna use matchit!
 source $VIMRUNTIME/macros/matchit.vim
 
+" SQL syntax highlighting will default to sqlserver (ughh)
+let g:sql_type_default = "sqlserver"
+
 " }}}
 
 " Persistent undo ---------------------- {{{
@@ -167,6 +170,9 @@ nnoremap <localleader>ds :%s/\s\+$//g<cr>
 " Go to the next item in the quickfix list quickly
 nnoremap <localleader>n :cn<cr>
 
+" Perform a diffput
+nnoremap <localleader>p :diffput<cr>
+
 " }}}
 
 " Abbreviations ---------------------- {{{
@@ -180,6 +186,7 @@ set statusline=%f " Relative path
 set statusline+=\ %m%r " modified and read-only flags
 set statusline+=%y " File type
 set statusline+=[%{&ff}] " File format
+set statusline+=[%{&fenc}] " File encoding
 set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''} " Fugitive status
 set statusline+=[char=%b]
 set statusline+=%=%-14.(%l,%c%V%) " Line number, column and virtual column
@@ -267,13 +274,16 @@ endif
 " vim-plug plugin management ---------------------- {{{
 call plug#begin(vimDir.'/plugs')
 
-Plug 'https://github.com/talek/vorax4.git', { 'on': 'VORAXConnect' }
+Plug 'https://github.com/talek/vorax4.git'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/Shougo/neocomplete.vim.git'
-Plug 'https://github.com/fatih/vim-go.git', { 'tag': '*', 'for': 'go' }
+Plug 'https://github.com/fatih/vim-go.git', { 'tag': '*', 'for': 'go', 'do': ':GoInstallBinaries' }
 Plug 'https://github.com/majutsushi/tagbar.git'
 Plug 'https://github.com/craigemery/vim-autotag.git'
+Plug 'https://github.com/PProvost/vim-ps1.git', { 'for': 'ps1' }
+Plug 'https://github.com/juneedahamed/vc.vim'
+Plug 'https://github.com/artur-shaik/vim-javacomplete2'
 
 call plug#end()
 " }}}
@@ -287,7 +297,7 @@ call plug#end()
   let g:vorax_folding_enable = 0
 "endif
 
-let g:vorax_homedir = '\Users\hardeyry\.vorax'
+let g:vorax_homedir = $HOME.'\.vorax'
 let g:vorax_debug = 1
 let g:vorax_debug_level = 'ALL'
 let g:vorax_output_window_clear_before_exec = 0
@@ -315,6 +325,7 @@ augroup END
 " CtrlP ---------------------- {{{
 "
 let g:ctrlp_working_path_mode = 'rc' " Use the CWD.
+let g:ctrlp_show_hidden = 1 " Include .* directories and files in list.
 
 nnoremap <c-b> :CtrlPBuffer<cr>
 
@@ -326,7 +337,7 @@ let g:ycm_server_keep_logfiles=1
 let g:ycm_collect_identifiers_from_tags_files=1
 " }}}
 
-" JavaComplete ---------------------- {{{
+" Vim-JavaComplete2 ---------------------- {{{
 "
 " Vim configuration augroup ---------------------- {{{
 " Put these in an autocmd group, so that we can delete them easily.
@@ -335,6 +346,59 @@ augroup JavaComplete
 
   " Set omnifunc
   autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+  " To enable smart (trying to guess import option) inserting class imports with F4, add:
+
+  nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+  imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+
+  " To enable usual (will ask for import option) inserting class imports with F5, add:
+
+  nmap <F5> <Plug>(JavaComplete-Imports-Add)
+  imap <F5> <Plug>(JavaComplete-Imports-Add)
+
+  " To add all missing imports with F6:
+
+  nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+  imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+
+  " To remove all missing imports with F7:
+
+  nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+  imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+
+  " Default mappings:
+
+  nmap <leader>jI <Plug>(JavaComplete-Imports-AddMissing)
+  nmap <leader>jR <Plug>(JavaComplete-Imports-RemoveUnused)
+  nmap <leader>ji <Plug>(JavaComplete-Imports-AddSmart)
+  nmap <leader>jii <Plug>(JavaComplete-Imports-Add)
+
+  imap <C-j>I <Plug>(JavaComplete-Imports-AddMissing)
+  imap <C-j>R <Plug>(JavaComplete-Imports-RemoveUnused)
+  imap <C-j>i <Plug>(JavaComplete-Imports-AddSmart)
+  imap <C-j>ii <Plug>(JavaComplete-Imports-Add)
+
+  nmap <leader>jM <Plug>(JavaComplete-Generate-AbstractMethods)
+
+  imap <C-j>jM <Plug>(JavaComplete-Generate-AbstractMethods)
+
+  nmap <leader>jA <Plug>(JavaComplete-Generate-Accessors)
+  nmap <leader>js <Plug>(JavaComplete-Generate-AccessorSetter)
+  nmap <leader>jg <Plug>(JavaComplete-Generate-AccessorGetter)
+  nmap <leader>ja <Plug>(JavaComplete-Generate-AccessorSetterGetter)
+  nmap <leader>jts <Plug>(JavaComplete-Generate-ToString)
+  nmap <leader>jeq <Plug>(JavaComplete-Generate-EqualsAndHashCode)
+  nmap <leader>jc <Plug>(JavaComplete-Generate-Constructor)
+  nmap <leader>jcc <Plug>(JavaComplete-Generate-DefaultConstructor)
+
+  imap <C-j>s <Plug>(JavaComplete-Generate-AccessorSetter)
+  imap <C-j>g <Plug>(JavaComplete-Generate-AccessorGetter)
+  imap <C-j>a <Plug>(JavaComplete-Generate-AccessorSetterGetter)
+
+  vmap <leader>js <Plug>(JavaComplete-Generate-AccessorSetter)
+  vmap <leader>jg <Plug>(JavaComplete-Generate-AccessorGetter)
+  vmap <leader>ja <Plug>(JavaComplete-Generate-AccessorSetterGetter)
 
 augroup END
 " }}}
