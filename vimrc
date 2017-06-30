@@ -108,14 +108,14 @@ set foldlevelstart=0 " Starts with all folds closed, where folding enabled.
 "set foldmethod=syntax
 
 " Turn syntax folding on for these filetypes.
-"let g:xml_syntax_folding = 1
+let g:xml_syntax_folding = 1
 "let perl_fold = 1
 
 " I wanna use matchit!
 source $VIMRUNTIME/macros/matchit.vim
 
 " SQL syntax highlighting will default to sqlserver (ughh)
-let g:sql_type_default = "sqlserver"
+"let g:sql_type_default = "sqlserver"
 
 " }}}
 
@@ -176,7 +176,7 @@ nnoremap <localleader>p :diffput<cr>
 " }}}
 
 " Abbreviations ---------------------- {{{
-iabbrev @@ ryan.hardey@gov.bc.ca
+iabbrev @@ ryan.hardey@ca.fujitsu.com
 iabbrev rjh Ryan Hardey
 " }}}
 
@@ -284,6 +284,9 @@ Plug 'https://github.com/craigemery/vim-autotag.git'
 Plug 'https://github.com/PProvost/vim-ps1.git', { 'for': 'ps1' }
 Plug 'https://github.com/juneedahamed/vc.vim'
 Plug 'https://github.com/artur-shaik/vim-javacomplete2'
+"Plug 'https://github.com/vim-syntastic/syntastic.git'
+"Plug 'https://github.com/neomake/neomake.git'
+Plug 'https://github.com/w0rp/ale.git', { 'tag': '*'}
 
 call plug#end()
 " }}}
