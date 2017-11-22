@@ -88,7 +88,7 @@ if !exists("b:match_words")
 		"\
     let b:match_words = &matchpairs .
                 \ ',' .
-                \ '\<begin\>:\<end;'. 
+                \ '\<begin\>:\<end\>'. 
                 \ ',' .
                 \ s:notend . '\<if\>:'.
                 \ '\<elsif\>\|\<elseif\>\|\<else\>:'.

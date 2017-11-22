@@ -115,7 +115,7 @@ let g:xml_syntax_folding = 1
 source $VIMRUNTIME/macros/matchit.vim
 
 " SQL syntax highlighting will default to sqlserver (ughh)
-"let g:sql_type_default = "sqlserver"
+let g:sql_type_default = "sqlserver"
 
 " }}}
 
@@ -274,7 +274,7 @@ endif
 " vim-plug plugin management ---------------------- {{{
 call plug#begin(vimDir.'/plugs')
 
-Plug 'https://github.com/talek/vorax4.git'
+"Plug 'https://github.com/talek/vorax4.git'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/Shougo/neocomplete.vim.git'
@@ -286,7 +286,7 @@ Plug 'https://github.com/juneedahamed/vc.vim'
 Plug 'https://github.com/artur-shaik/vim-javacomplete2'
 "Plug 'https://github.com/vim-syntastic/syntastic.git'
 "Plug 'https://github.com/neomake/neomake.git'
-Plug 'https://github.com/w0rp/ale.git', { 'tag': '*'}
+"Plug 'https://github.com/w0rp/ale.git', { 'tag': '*'}
 
 call plug#end()
 " }}}
@@ -430,4 +430,35 @@ if has('win32')
 endif
 " }}}
 
+" vc ---------------------- {{{
+"
+if (has('win32') || has('win64'))
+  let g:vc_cache_dir=$HOME
+endif
+
+
+" }}}
+
+" ale ---------------------- {{{
+"
+"augroup Ale
+
+  "au!
+  "autocmd FileType java let g:ale_java_javac_classpath=g:JavaComplete_LibsPath
+
+"augroup END
+
+" }}}
+"
+" Syntastic ---------------------- {{{
+"
+"augroup Syntastic
+
+  "au!
+  "autocmd FileType java let g:syntastic_java_javac_classpath=g:JavaComplete_LibsPath
+
+"augroup END
+
+" }}}
+"
 " }}}
