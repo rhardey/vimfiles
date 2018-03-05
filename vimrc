@@ -108,7 +108,7 @@ set foldlevelstart=0 " Starts with all folds closed, where folding enabled.
 "set foldmethod=syntax
 
 " Turn syntax folding on for these filetypes.
-"let g:xml_syntax_folding = 1
+let g:xml_syntax_folding = 1
 "let perl_fold = 1
 
 " I wanna use matchit!
@@ -176,7 +176,7 @@ nnoremap <localleader>p :diffput<cr>
 " }}}
 
 " Abbreviations ---------------------- {{{
-iabbrev @@ ryan.hardey@gov.bc.ca
+iabbrev @@ ryan.hardey@ca.fujitsu.com
 iabbrev rjh Ryan Hardey
 " }}}
 
@@ -274,7 +274,7 @@ endif
 " vim-plug plugin management ---------------------- {{{
 call plug#begin(vimDir.'/plugs')
 
-Plug 'https://github.com/talek/vorax4.git'
+"Plug 'https://github.com/talek/vorax4.git'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/Shougo/neocomplete.vim.git'
@@ -284,6 +284,9 @@ Plug 'https://github.com/craigemery/vim-autotag.git'
 Plug 'https://github.com/PProvost/vim-ps1.git', { 'for': 'ps1' }
 Plug 'https://github.com/juneedahamed/vc.vim'
 Plug 'https://github.com/artur-shaik/vim-javacomplete2'
+"Plug 'https://github.com/vim-syntastic/syntastic.git'
+"Plug 'https://github.com/neomake/neomake.git'
+"Plug 'https://github.com/w0rp/ale.git', { 'tag': '*'}
 
 call plug#end()
 " }}}
@@ -427,4 +430,35 @@ if has('win32')
 endif
 " }}}
 
+" vc ---------------------- {{{
+"
+if (has('win32') || has('win64'))
+  let g:vc_cache_dir=$HOME
+endif
+
+
+" }}}
+
+" ale ---------------------- {{{
+"
+"augroup Ale
+
+  "au!
+  "autocmd FileType java let g:ale_java_javac_classpath=g:JavaComplete_LibsPath
+
+"augroup END
+
+" }}}
+"
+" Syntastic ---------------------- {{{
+"
+"augroup Syntastic
+
+  "au!
+  "autocmd FileType java let g:syntastic_java_javac_classpath=g:JavaComplete_LibsPath
+
+"augroup END
+
+" }}}
+"
 " }}}

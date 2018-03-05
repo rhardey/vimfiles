@@ -27,56 +27,34 @@ if !exists("b:match_words")
     let b:match_ignorecase = 1
 
     " Handle the following:
-    " if
-    " elseif | elsif
-    " else [if]
-    " end if
     "
-    " [while condition] loop
-    "     leave
-    "     break
-    "     continue
-    "     exit
-    " end loop
+    " begin try
+    " end try
     "
-    " for
-    "     leave
-    "     break
-    "     continue
-    "     exit
-    " end loop
-    "
-    " do
-    "     statements
-    " doend
+    " begin catch
+    " end catch
     "
     " case
-    " when
-    " when
-    " default
-    " end case
+    " end
     "
-    " merge
-    " when not matched
-    " when matched
+    " if
+    " else
     "
-    " EXCEPTION
-    " WHEN column_not_found THEN
-    " WHEN OTHERS THEN
-    "
-    " create[ or replace] procedure|function|event
-                " \ '^\s*\<\%(do\|for\|while\|loop\)\>.*:'.
 
     " For ColdFusion support
     setlocal matchpairs+=<:>
-    "let b:match_words = &matchpairs .
-		"\ ',\<begin\>:\<end\>\W*$,'.
-		"\
-    let b:match_words = &matchpairs .
-                \ ',' .
-                \ '\%(\<begin\%(\s\+\%(try\|catch\)\)\=\>\)\%(\s*transaction\)\@!:\<end\%(\s\+\%(try\|catch\)\)\=\>'.
-                \ ',' .
-                \ '\<if\>:<\else\>'
 
-  "let b:match_skip = 'getline(".") =~ "\<begin\>\s\+\<transaction\>"'
+    let b:match_words = &matchpairs .
+                \ ','.
+                \ '\<begin\s\+try\>:\<end\s\+try\>'.
+                \ ','.
+                \ '\<begin\s\+catch\>:\<end\s\+catch\>'.
+                \ ','.
+                \ '\<\%(begin\|case\)\>:\<end\>'.
+                \ ','.
+                \ '\<if\>:\<else\>'.
+                \ ''
+
+    let b:match_skip = 'getline(".") =~ "\\<begin\\>\\s\\+\\<transaction\\>"'
+
 endif
