@@ -20,6 +20,8 @@ set nobackup    " Do not keep a backup file (i.e. no ~ files scattered around, O
 
 set showcmd     " display incomplete commands
 
+set nomodeline  " turn off any chance of malicious code being executed from within a text file (https://www.theregister.co.uk/2019/06/12/vim_remote_command_execution_flaw/).
+
 
 " When on, Vim will change the current working directory whenever you open a
 " file, switch buffers, delete a buffer or open/close a window.
@@ -277,13 +279,14 @@ call plug#begin(vimDir.'/plugs')
 "Plug 'https://github.com/talek/vorax4.git'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
-Plug 'https://github.com/Shougo/neocomplete.vim.git'
-Plug 'https://github.com/fatih/vim-go.git', { 'tag': '*', 'for': 'go', 'do': ':GoInstallBinaries' }
+"Plug 'https://github.com/Shougo/neocomplete.vim.git'
+Plug 'maxboisvert/vim-simple-complete'
+"Plug 'https://github.com/fatih/vim-go.git', { 'tag': '*', 'for': 'go', 'do': ':GoInstallBinaries' }
 Plug 'https://github.com/majutsushi/tagbar.git'
 Plug 'https://github.com/craigemery/vim-autotag.git'
 Plug 'https://github.com/PProvost/vim-ps1.git', { 'for': 'ps1' }
-Plug 'https://github.com/juneedahamed/vc.vim'
-Plug 'https://github.com/artur-shaik/vim-javacomplete2'
+"Plug 'https://github.com/juneedahamed/vc.vim'
+"Plug 'https://github.com/artur-shaik/vim-javacomplete2'
 "Plug 'https://github.com/vim-syntastic/syntastic.git'
 "Plug 'https://github.com/neomake/neomake.git'
 "Plug 'https://github.com/w0rp/ale.git', { 'tag': '*'}
