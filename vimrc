@@ -72,7 +72,7 @@ set tabstop=4
 set showmatch
 
 " REVISIT
-set formatoptions=croql
+set formatoptions=croqlj
 
 set printoptions+=number:y
 
@@ -114,7 +114,7 @@ let g:xml_syntax_folding = 1
 "let perl_fold = 1
 
 " I wanna use matchit!
-source $VIMRUNTIME/macros/matchit.vim
+packadd matchit
 
 " SQL syntax highlighting will default to sqlserver (ughh)
 let g:sql_type_default = "sqlserver"
